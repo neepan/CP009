@@ -68,6 +68,12 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "string_view": "cpp",
+        "generator": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "text_encoding": "cpp"
     }
 }
