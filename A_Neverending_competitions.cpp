@@ -32,15 +32,35 @@ int main()
     lli n;
     cin >> n;
 
-    if (n % 3 == 0)
+    string h;
+    cin>>h;
+
+    vector<string> v1(n);
+    fr(i,n){
+        cin>>v1[i];
+    }
+    lli cnt1=0,cnt2=0;
+    for(auto x: v1){
+        string departure = x.substr(0,3);
+        string arrival = x.substr(5,3);
+
+        if(departure == h){
+            cnt1++;
+        }
+        else if(arrival == h){
+            cnt2++;
+        }
+    }
+
+
+    if (cnt1 > cnt2)
     {
-        cout << 1 << " " << 1 << " " << (n - 2) << endl;
+        cout << "contest" << endl;
     }
     else
     {
-        cout << 1 << " " << 2 << " " << (n - 3) << endl;
+        cout << "home" << endl;
     }
 
     return 0;
 }
-\
