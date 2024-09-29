@@ -59,3 +59,6 @@ int main()
 
     return 0;
 }
+
+
+// Approach is taking the maximum frequency for each question and multiplying it with the marks of that question.
