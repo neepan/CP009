@@ -30,38 +30,58 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-        int n,k;
-    cin>>n>>k;
-    string s;
-    cin>>s;
-    vi hash(k,0);
-    lli size = 0;
-    lli x = INT_MAX;
-    for(lli i=0;i<n;i++)
-    {
-         hash[s[i]-'A']++;
-    }
-    for(int i =0 ; i<k;i++)
-    {
-        x = min(x,hash[i]);
- 
-    }
- 
-     for(lli i=0;i<k;i++)
-    {
-         if(hash[i] == 0)
-         {
-            size = 0;
-            break;
-         }
-         else
-         {
-            size = size+x;
-         }
-    }
-         cout<<size<<endl;
- 
- 
+    lli n, k;
+    cin >> n >> k;
 
+    vector<char> v(n);
+    fr(i, n) cin >> v[i];
+
+    lli cnt = 0;
+
+    // taking the first k elements
+    vi a(k);
+    for (lli i = 0; i < k; i++)
+        a[i] = 'A' + i;
+
+    // checking if the first k elements are present in the string
+    for (lli j = 0; j < k; j++)
+    {
+        bool found = false;
+        for (lli i = 0; i < n; i++)
+        {
+            if (v[i] == a[j])
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            cnt = -1;
+            break;
+        }
+    }
+    // now checking for good subsequences
+    if (cnt == -1)
+    {
+        cout << 0 << endl;
+    }
+    else
+    {
+        lli count = 0;
+        for (char c = 'A'; c < 'A' + k; c++)
+        {
+            lli temp_count = 0;
+            fr(i, n)
+            {
+                if (v[i] == c)
+                {
+                    temp_count++;
+                }
+            }
+            count = (count == 0) ? temp_count : min(count, temp_count);
+        }
+        cout << count * k << endl;
+    }
     return 0;
 }
