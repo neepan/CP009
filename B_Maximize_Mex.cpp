@@ -35,33 +35,46 @@ int main()
 
     while (t--)
     {
-        // lli n;
-        // cin >> n;
-        // vi a(n);
-        // fr(i, n) cin >> a[i];
+        lli n;
+        cin >> n;
+        lli x;
+        cin >> x;
+        vector<lli> v(n);
+        for (auto &it : v)
+            cin >> it;
+        sort(all(v));
+        map<lli, lli> mpp, mp1;
+        for (auto it : v)
+        {
+            mp1[it]++;
+        }
+        int cnt = 0;
 
-        // lli flr = 0;
-        // while (n > 1)
-        // {
-        //     sort(all(a));
-        //     flr = (a[0] + a[1]) / 2;
-        //     a.erase(a.begin() + 0);
-        //     a.erase(a.begin() + 0);
-        //     a.pb(flr);
-        //     n--;
-        // }
-        // cout << a[0] << endl;
-         lli n;
-    cin>>n;
-    
-    vector<lli>v(n);
-    for(auto &it:v)cin>>it;
-    sort(all(v));
-    lli ans=(v[0]+v[1])/2;
-    for(int i=2;i<n;i++){
-        ans= (ans+v[i])/2;
-    }
-    cout<<ans<<endl;
+        while (true)
+        {
+            if (mp1[cnt] > 0)
+            {
+
+                mp1[cnt]--;
+                lli f = mp1[cnt];
+                for (int i = 0; i < f; i++)
+                {
+                    mpp[cnt % x]++;
+                }
+                cnt++;
+            }
+            else if (mpp[cnt % x] > 0)
+            {
+                // cout<<"hello"<<endl;
+                mpp[cnt % x]--;
+                cnt++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        cout << cnt << endl;
     }
     return 0;
 }
