@@ -10,7 +10,7 @@ using namespace std;
 
 #define fr(i, n) for (lli i = 0; i < n; i++)
 #define pb push_back
-#define sz(x) x.size()
+#define sz(x) (lli)x.size()
 #define ff first
 #define ss second
 #define all(v) v.begin(), v.end()
@@ -46,7 +46,7 @@ int main()
         lli i=0;
         while(i<sz(s) && i<sz(q) && s[i]==q[i]){
             i++;
-            cout<<min(static_cast<lli>(sz(s)+sz(q)), static_cast<lli>(sz(s)+sz(q)-i+1))<<endl;
+            cout<<min(sz(s)+sz(q),sz(s)+sz(q)-i+1)<<endl;
         }
     }
     return 0;
