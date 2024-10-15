@@ -1,8 +1,3 @@
-/* find the longest string which is part of
-both the strings.
---> len(s)+len(t)+1 {for copying} +i {where i is the
-length of charcters common in both the strings}*/
-
 // Neepan Biswas
 // neepanb ~ codeforces
 #include <bits/stdc++.h>
@@ -10,7 +5,7 @@ using namespace std;
 
 #define fr(i, n) for (lli i = 0; i < n; i++)
 #define pb push_back
-#define sz(x) (lli)x.size()
+#define sz(x) (lli) x.size()
 #define ff first
 #define ss second
 #define all(v) v.begin(), v.end()
@@ -35,20 +30,31 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    lli t;
-    cin >> t;
-
-    while (t--)
+    str s;
+    cin >> s;
+    lli cnt = 0;
+    fr(i, sz(s)-2)
     {
-        str s,q;
-        cin>>s>>q;
-
-        lli i=0;
-        while(i<sz(s) && i<sz(q) && s[i]==q[i]){
-            i++;
+        if (s[i] != '.')
+        {
+            // if (s[i] != s[i + 1] && s[i] != s[i + 2] && s[i + 1] != s[i + 2] && s[i + 1] != '.' && s[i + 2] != '.')
+            if(s[i]*s[i+1]*s[i+2]==287430)
+            {
+                cnt = 1;
+                break;
+            }
+            else
+            {
+                cnt = 0;
+            }
         }
-            cout<<min(sz(s)+sz(q),sz(s)+sz(q)-i+1)<<endl;
-        
     }
+    if (cnt == 1)
+    {
+        cout << "YES" << endl;
+    }
+    else
+        cout << "NO" << endl;
+
     return 0;
 }
