@@ -40,7 +40,7 @@ int main()
         lli e = 0, s = 0;
         fr(i, n)
         {
-            if ((i + 1 - b) % k != 0)
+            if ((i - b) % k != 0)
             {
                 if (a[i] == 1)
                     ++e;
