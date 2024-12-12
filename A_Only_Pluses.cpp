@@ -41,8 +41,19 @@ int main()
 
     while (t--)
     {
-        lli a,b,c;
-        cin>>a>>b>>c;
+        vi a(3);
+        fr(i,3)cin>>a[i];
+
+        fr(i,5){
+            sort(all(a));
+            a[0]++;
+        } 
+
+        lli ans=1;
+        fr(i,3){
+            ans*=a[i];
+        }
+        cout<<ans<<endl;
 
         
     }
