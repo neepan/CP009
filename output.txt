@@ -1,2 +1,6 @@
-100
-600
+YES
+NO
+YES
+NO
+YES
+YES
