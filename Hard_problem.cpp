@@ -39,15 +39,40 @@ int main(){
 	cin>>t;
 
 	while(t--){
-		lli x1,y1,x2,y2;
-		cin>>x1>>y1>>x2>>y2;
+		lli n,a,b,c;
+		cin>>n>>a>>b>>c;
 
-		if((x1>y1) == (x2>y2)){
-			cout<<"YES"<<endl;
+		
+		if((2*n)>(a+b+c)){
+			cout<<(a+b+c)<<endl;
 		}
 		else{
-			cout<<"NO"<<endl;
-		}
+			lli ans=0;
+			lli left=0;
 
+			if(a>=n){
+				ans+=n;
+			}
+			if(a<n){
+				ans+=a;
+				left+=n-a;
+			}
+			if(b<n){
+				ans+=b;
+				left+=n-b;
+			}
+			if(b>=n ){
+				ans+=n;
+			}
+			
+			if(left>=c){
+				ans+=c;
+			}
+		    if(left<c){
+				ans+=left;
+			}
+			cout<<ans<<endl;
+		}
 	}
+	return 0;
 }

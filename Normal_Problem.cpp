@@ -39,15 +39,16 @@ int main(){
 	cin>>t;
 
 	while(t--){
-		lli x1,y1,x2,y2;
-		cin>>x1>>y1>>x2>>y2;
-
-		if((x1>y1) == (x2>y2)){
-			cout<<"YES"<<endl;
-		}
-		else{
-			cout<<"NO"<<endl;
-		}
+		str s;
+		cin>>s;
+		str result;
+		for(lli i=sz(s);i>=0;i--){
+			if(s[i]=='q')result+='p';
+			if(s[i]=='p')result+='q';
+			if(s[i]=='w')result+='w';
+			}
+		cout<<result<<endl;
 
 	}
+	return 0;
 }
