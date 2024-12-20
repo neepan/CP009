@@ -43,10 +43,7 @@ int main(){
 		cin>>n>>a>>b>>c;
 
 		
-		if((2*n)>(a+b+c)){
-			cout<<(a+b+c)<<endl;
-		}
-		else{
+		
 			lli ans=0;
 			lli left=0;
 
@@ -72,7 +69,7 @@ int main(){
 				ans+=left;
 			}
 			cout<<ans<<endl;
-		}
+		
 	}
 	return 0;
 }
