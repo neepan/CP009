@@ -43,23 +43,33 @@ int main(){
 	cin>>t;
 
 	while(t--){
-		lli n;
-		cin>>n;
+		lli n,k;
+		cin>>n>>k;
+		vi a(n);
+		fr(i,0,n-1)cin>>a[i];
 
 		
-		if(n<4){
-			cout<<1<<endl;
-		}
-		else{
-			lli cnt=1;
-			while(n>3){
-				n/=4;
-				cnt*=2;
+		lli ans=0;
+		
+		fr(i,0,n-1){
+			bl f=true;
+			for(lli j=0;j<n;j++){
+				if(i==j)continue;
+				if((abs(a[i]-a[j])%k) == 0){
+					f=false;
+					break;
+				}
 			}
-			cout<<cnt<<endl;
+			if(f){
+				cout<<"YES"<<endl;
+				cout<<i+1<<endl;
+			}
 		}
+		cout<<"NO"<<endl;
 
+		
+		
 
-}
-return 0;
+	}
+	return 0;
 }
