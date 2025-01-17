@@ -1,46 +1,62 @@
+// Neepan Biswas
+// neepan ~ codeforces
 #include <bits/stdc++.h>
 using namespace std;
 
-#define fr(i, n) for (lli i = 0; i < n; i++)
+using lli = long long int;
+using ch = char;
+using str = string;
+using ld = long double;
+using pi = pair<lli, lli>;
+using vp = vector<pi>;
+using vi = vector<lli>;
+using vs = vector<str>;
+using vc = vector<ch>;
+using bl = bool;
+using mp = map<lli, lli>;
+using ump = unordered_map<lli, lli>;
+
+#define fr(i, x, n) for (lli i = (x); i <= n; i++)
+#define fr1(i, x, n) for (lli i = n; i >= (x); i--)
 #define pb push_back
-#define sz(x) x.size()
+#define eb emplace_back
+#define sz(x) (lli) x.size()
 #define ff first
 #define ss second
 #define all(v) v.begin(), v.end()
 #define debug(x) cout << '>' << #x << ':' << x << endl;
-
-using lli = long long int;
-using ld = long double;
-using ii = pair<lli, lli>;
-using vii = vector<ii>;
-using vi = vector<lli>;
-using bl = bool;
-using mp = map<lli, lli>;
-using ump = unordered_map<lli, lli>;
-using str = string;
+#define cd(condition, value_if_true, value_if_false) ((condition) ? (value_if_true) : (value_if_false))
 
 #pragma GCC optimize("unroll-loops,O3,Ofast")
 #pragma GCC target("avx2,avx,fma,bmi,bmi2,lzcnt,popcnt")
+
+// Global matrix to prevent stack overflow
+// const lli MAX_N = 1000; // Adjust based on constraints
+// vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
+
+void neepan()
+{
+    lli n;
+    cin >> n;
+    string s = "aeiou";
+    fr(i, 0, 4)
+    {
+        cout << string((n / 5) + ((n % 5 != 0) && (n % 5 > i)), s[i]);
+    }
+    cout<<endl;
+}
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    lli t;
+    lli t = 1;
     cin >> t;
 
     while (t--)
     {
-        lli n;
-        cin >> n;
-        vector<char> s={'a','e','i','o','u'};
-        string res="";
-        for (lli i = n - 1; i >= 0; i--) {
-            res += s[i % 5];
-        }
-        cout<<res<<endl;
-
+        neepan();
     }
     return 0;
 }
