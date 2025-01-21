@@ -34,61 +34,43 @@ using ump = unordered_map<lli, lli>;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
-void swap(lli &a, lli &b)
-{
-    lli temp = a;
-    a = b;
-    b = temp;
-}
+
 void neepan()
 {
-    lli n, m;
-    cin >> n >> m;
-
-    vector<vi> a(n, vi(m));
-    for (auto &v : a)
-    {
-        for (auto &x : v)
-            cin >> x;
+    lli n,m;
+    cin>>n>>m;
+    vector<vi> a(n,vi(m));
+    for(auto &v:a){
+        for(auto &x:v)
+            cin>>x;
     }
-    // Sort row wise
-    fr(i, 0, n - 1)
-    {
-        sort(a[i].begin(), a[i].end());
-    }
-    // p is the order
-    vi p(n);
-    fr(i, 0, n - 1)
-    {
-        p[i] = i + 1;
-    }
-    fr(i, 0, n - 1)
-    {
-        for (lli j = i + 1; j < n; j++)
-        {
-            if (a[i][0] >> a[j][0])
-            {
-                swap(a[i], a[j]);
-                swap(p[i], p[j]);
-            }
+ 
+    vi perm(n,-1);
+    bool isValid=true;
+    for(lli i=0;i<n;i++){
+        if(!isValid)
+            break;
+        sort(all(a[i]));
+        for(lli j=1;j<m;j++){
+            if(a[i][j-1]+n!=a[i][j])
+                isValid=false;
         }
+ 
+        if(!isValid)
+            break;
+        perm[a[i][0]]=i;
     }
-    fr(j, 0, m - 1)
-    {
-        fr(i, 0, n - 1)
-        {
-            if (a[i][j] != j * n + i)
-            {
-                cout << -1 << endl;
-                return;
-            }
-        }
+ 
+ 
+    if(!isValid){
+        cout<<-1<<endl;
+        return;
     }
-    for (const auto &x : p)
-    {
-        cout << x << " ";
-    }
-    cout << endl;
+ 
+    for(const auto &x:perm)
+        cout<<x+1<<" ";
+    cout<<endl;
+    
 }
 
 int main()
