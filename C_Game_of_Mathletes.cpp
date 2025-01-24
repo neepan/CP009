@@ -17,7 +17,7 @@ using mp = map<lli, lli>;
 using ump = unordered_map<lli, lli>;
 
 #define fr(i, x, n) for (lli i = (x); i <= n; i++)
-#define fr1(i, x, n) for (lli i = n; i >= (x); i--)
+#define fr1(j, n, x) for (lli j = (n); j >= (x); j--)
 #define pb push_back
 #define eb emplace_back
 #define sz(x) (lli) x.size()
@@ -34,43 +34,30 @@ using ump = unordered_map<lli, lli>;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
-
 void neepan()
 {
-    lli n,m;
-    cin>>n>>m;
-    vector<vi> a(n,vi(m));
-    for(auto &v:a){
-        for(auto &x:v)
-            cin>>x;
+    lli n, k;
+    cin >> n >> k;
+
+    vi a(n);
+    fr(i, 0, n - 1) cin >> a[i];
+
+    mp f;
+
+    fr(i, 0, n - 1)
+    {
+        f[a[i]]++;
     }
- 
-    vi perm(n,-1);
-    bool isValid=true;
-    for(lli i=0;i<n;i++){
-        if(!isValid)
-            break;
-        sort(all(a[i]));
-        for(lli j=1;j<m;j++){
-            if(a[i][j-1]+n!=a[i][j])
-                isValid=false;
-        }
- 
-        if(!isValid)
-            break;
-        perm[a[i][0]]=i;
+    lli ans = 0;
+    fr(i, 0, (k - 1) / 2)
+    {
+        ans+=min(f[i],f[k-i]);
     }
- 
- 
-    if(!isValid){
-        cout<<-1<<endl;
-        return;
+    if (k & 1 ^ 1)
+    {
+        ans += f[k / 2] / 2;
     }
- 
-    for(const auto &x:perm)
-        cout<<x+1<<" ";
-    cout<<endl;
-    
+    cout<<ans<<endl;
 }
 
 int main()
