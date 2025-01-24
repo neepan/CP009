@@ -53,6 +53,7 @@ void neepan(){
         cout<<1<<endl;
         return;
     }
+
     lli cnt=0;
     vi v;
     fr(i,0,n-1){
