@@ -25,7 +25,10 @@ using ump = unordered_map<lli, lli>;
 #define all(v) v.begin(), v.end()
 #define debug(x) cout << '>' << #x << ':' << x << endl;
 #define cd(condition, value_if_true, value_if_false) ((condition) ? (value_if_true) : (value_if_false))
-
+const int inf = 9e17;
+const int mod = 1e9 + 7;
+const int NUM = 1000030;
+const int N = 10000000;
 #pragma GCC optimize("unroll-loops,O3,Ofast")
 #pragma GCC target("avx2,avx,fma,bmi,bmi2,lzcnt,popcnt")
 
@@ -33,32 +36,41 @@ using ump = unordered_map<lli, lli>;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
+lli findsmall(const vi &vec, lli x)
+{
+    auto it = lower_bound(vec.begin(), vec.end(), x);
+    return (it != vec.end()) ? *it : -1; // return -1 if no such element exists
+}
 void neepan()
 {
-    lli n;
-    cin >> n;
+    lli n, m;
+    cin >> n >> m;
 
     vi a(n);
     fr(i, 0, n - 1) cin >> a[i];
+    vi b(m);
+    fr(i, 0, m - 1) cin >> b[i];
+    sort(all(b));
 
-    vp v;
-    v.eb(1, n);
-
-    if (n & 1)
+    lli prev = -inf;
+    fr(i, 0, n - 1)
     {
-        v.eb(1, n - 2);
-        v.eb(n - 2, n);
-        v.eb(n - 2, n);
+        lli val = findsmall(b, a[i] + prev);
+        if (val != -1){
+            if(a[i]<prev){
+                a[i]=val - a[i];
+            }
+            else{
+                a[i] = min(a[i], val - a[i]);
+            }
+        }
+        if(a[i]<prev){
+            cout<<"NO"<<endl;
+            return;
+        }
+        prev=a[i];
     }
-    else
-    {
-        v.eb(1, n);
-    }
-    cout << sz(v) << endl;
-    for (const auto &x : v)
-    {
-        cout << x.ff << ' ' << x.ss << endl;
-    }
+    cout<<"YES"<<endl;
 }
 
 int main()

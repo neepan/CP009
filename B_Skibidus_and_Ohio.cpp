@@ -35,30 +35,19 @@ using ump = unordered_map<lli, lli>;
 
 void neepan()
 {
-    lli n;
-    cin >> n;
+    string s;
+    cin >> s;
+    lli cnt = 0;
 
-    vi a(n);
-    fr(i, 0, n - 1) cin >> a[i];
-
-    vp v;
-    v.eb(1, n);
-
-    if (n & 1)
+    fr(i, 0, sz(s)-1)
     {
-        v.eb(1, n - 2);
-        v.eb(n - 2, n);
-        v.eb(n - 2, n);
+        if (s[i] == s[i + 1])
+        {
+            cout << 1 << endl;
+            return;
+        }
     }
-    else
-    {
-        v.eb(1, n);
-    }
-    cout << sz(v) << endl;
-    for (const auto &x : v)
-    {
-        cout << x.ff << ' ' << x.ss << endl;
-    }
+    cout<<sz(s)<<endl;
 }
 
 int main()
