@@ -44,17 +44,34 @@ void neepan()
 {
     lli n;
     cin >> n;
-    lli m=2*n;
-    vi a(m);
-    fr(i,0,m-1)cin>>a[i];
 
-    lli c1=0, c0=0;
-    fr(i,0,m-1){
-        if(a[i]==0)c0++;
-        else c1++;
+    vi a(n);
+    fr(i, 0, n - 1) cin >> a[i];
+
+    lli tot = accumulate(all(a),0LL);
+    if (tot % 3 == 0)
+    {
+        cout << 0 << endl;
+        return;
     }
-    cout<<(c1%2)<<" "<<min(c1,c0)<<endl;
-
+    if (tot % 3 == 2)
+    {
+        cout << 1 << endl;
+        return;
+    }
+    bool isOne = false;
+    for (auto x : a)
+    {
+        if ((tot - x) % 3 == 0)
+        {
+            isOne = true;
+        }
+    }
+    if(isOne){
+        cout<<1<<endl;
+        return;
+    }
+    cout<<2<<endl;
 }
 
 int main()

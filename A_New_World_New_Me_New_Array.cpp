@@ -42,19 +42,15 @@ const int N = 10000000;
 
 void neepan()
 {
-    lli n;
-    cin >> n;
-    lli m=2*n;
-    vi a(m);
-    fr(i,0,m-1)cin>>a[i];
+    lli n, k, p;
+    cin >> n >> k >> p;
 
-    lli c1=0, c0=0;
-    fr(i,0,m-1){
-        if(a[i]==0)c0++;
-        else c1++;
+    if (k == 0)
+    {
+        cout << 0 << endl;
+        return;
     }
-    cout<<(c1%2)<<" "<<min(c1,c0)<<endl;
-
+    
 }
 
 int main()

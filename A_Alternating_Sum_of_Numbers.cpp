@@ -44,17 +44,19 @@ void neepan()
 {
     lli n;
     cin >> n;
-    lli m=2*n;
-    vi a(m);
-    fr(i,0,m-1)cin>>a[i];
-
-    lli c1=0, c0=0;
-    fr(i,0,m-1){
-        if(a[i]==0)c0++;
-        else c1++;
+    vi a(n);
+    lli v = 0, b = 0;
+    fr(i, 0, n - 1)
+    {
+        cin >> a[i];
+        if(i%2){
+            v+=a[i];
+        }
+        else{
+            b+=a[i];
+        }
     }
-    cout<<(c1%2)<<" "<<min(c1,c0)<<endl;
-
+    cout<<b-v<<endl;
 }
 
 int main()
