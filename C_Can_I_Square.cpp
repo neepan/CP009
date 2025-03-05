@@ -42,17 +42,43 @@ const int N = 10000000;
 
 void neepan()
 {
-    lli n, k, p;
-    cin >> n >> k >> p;
+    lli n;
+    cin >> n;
+    vi a(n);
+    fr(i, 0, n - 1) cin >> a[i];
 
-     k=abs(k);
-     if(k> n*p){
-        cout<< -1<<endl;
-     }
-     else{
-        cout<<(k+p-1)/p <<endl;
-     }
-    
+    lli sum = accumulate(all(a), 0LL);
+
+    lli low = 1, high = sqrt(sum)+1;
+    bool isPerfect=false;
+
+    while (low <= high)
+    {
+        lli mid = (low + high) / 2;
+        
+
+        if (mid * mid == sum)
+        {
+            isPerfect=true;
+            break;
+        }
+        else if(mid*mid<sum)
+        {
+            low=mid+1;
+            
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    if (!isPerfect)
+    {
+        no;
+    }
+    else
+    {
+        yes;
+    }
 }
 
 int main()

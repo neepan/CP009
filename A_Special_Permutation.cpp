@@ -32,6 +32,7 @@ const int inf = 9e17;
 const int mod = 1e9 + 7;
 const int NUM = 1000030;
 const int N = 10000000;
+const int MAX_N = 1e6 + 5;
 
 #pragma GCC optimize("unroll-loops,O3,Ofast")
 #pragma GCC target("avx2,avx,fma,bmi,bmi2,lzcnt,popcnt")
@@ -42,17 +43,16 @@ const int N = 10000000;
 
 void neepan()
 {
-    lli n, k, p;
-    cin >> n >> k >> p;
-
-     k=abs(k);
-     if(k> n*p){
-        cout<< -1<<endl;
-     }
-     else{
-        cout<<(k+p-1)/p <<endl;
-     }
+    lli n;
+    cin >> n;
     
+    string s;
+    fr(i,2,n){
+        s+=to_string(i);
+        s+=' ';
+    }
+    s+='1';
+    cout<<s<<endl;
 }
 
 int main()

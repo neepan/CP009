@@ -32,6 +32,7 @@ const int inf = 9e17;
 const int mod = 1e9 + 7;
 const int NUM = 1000030;
 const int N = 10000000;
+const int MAX_N = 1e6 + 5;
 
 #pragma GCC optimize("unroll-loops,O3,Ofast")
 #pragma GCC target("avx2,avx,fma,bmi,bmi2,lzcnt,popcnt")
@@ -40,19 +41,45 @@ const int N = 10000000;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
+vi factorial(MAX_N);
+vi inv_factorial(MAX_N);
+
+// Function to compute factorial and inverse factorial modulo MOD
+void precompute_factorials()
+{
+    factorial[0] = 1;
+    for (int i = 1; i <MAX_N; i++)
+    {
+        factorial[i] = (factorial[i - 1] * i) % mod;
+    }
+
+    // Fermat's Little Theorem for modular inverse
+    inv_factorial[MAX_N - 1] = 1;
+    for (int i = MAX_N - 2; i >= 0; i--)
+    {
+        inv_factorial[i] = (inv_factorial[i + 1] * (i + 1)) % mod;
+    }
+}
+
+// Function to compute nCr modulo MOD
+lli nCr(int n, int r)
+{
+    if (r < 0 || r > n)
+        return 0;
+    return (factorial[n] * inv_factorial[r] % mod) * inv_factorial[n - r] % mod;
+}
+
+// Function to compute nPr modulo MOD
+lli nPr(int n, int r)
+{
+    if (r < 0 || r > n)
+        return 0;
+    return factorial[n] * inv_factorial[n - r] % mod;
+}
+
 void neepan()
 {
-    lli n, k, p;
-    cin >> n >> k >> p;
-
-     k=abs(k);
-     if(k> n*p){
-        cout<< -1<<endl;
-     }
-     else{
-        cout<<(k+p-1)/p <<endl;
-     }
-    
+    inverseofNumber(mod);
 }
 
 int main()
