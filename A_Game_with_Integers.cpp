@@ -43,42 +43,20 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    lli n, p;
-    cin >> n >> p;
-    vi a(n);
-    fr(i, 0, n - 1) cin >> a[i];
-    vi b(n);
-    fr(i, 0, n - 1) cin >> b[i];
+    lli n;
+    cin >> n;
 
-    vp cost_cap;
-    cost_cap.pb({p, n + 1});
-
-    fr(i, 0, n - 1)
+    if (n % 3 == 0)
     {
-        cost_cap.pb(make_pair(b[i], a[i]));
+        cout << "Second" << endl;
     }
-    sort(all(cost_cap));
-
-    int total = 1;
-    lli cost = p;
-    int idx = 0;
-    while (total < n)
-    {
-        int left = n - total;
-
-        if (cost_cap[idx].ss <= left)
-        {
-            total += cost_cap[idx].ss;
-            cost = cost + cost_cap[idx].ff * 1LL * cost_cap[idx].ss;
-        }
-        else
-        {
-            total = n;
-            cost = cost + left * 1LL * cost_cap[idx].ff;
-        }
-        idx++;
+    else if(n%3==1){
+        cout<<"First"<<endl;
     }
-    cout<<cost<<endl;
+    else if(n%3==2){
+        cout<<"First"<<endl;
+        
+    }
 }
 
 int main()
