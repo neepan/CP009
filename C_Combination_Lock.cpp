@@ -52,12 +52,23 @@ void neepan()
     }
     else
     {
+        // vi arr(n);
+        // fr(i, 0, n - 1)
+        // {
+        //     arr[2 * i % n] = i + 1;
+        // }
+        // for (auto &x : arr)
+        // {
+        //     cout << x << " ";
+        // }
+        // cout << endl;
         vi arr(n);
         fr(i, 0, n - 1)
         {
-            arr[2 * i % n] = i + 1;
+            arr[i] = i + 1;
         }
-        for (auto &x : arr)
+        reverse(all(arr));
+        for (auto x : arr)
         {
             cout << x << " ";
         }
