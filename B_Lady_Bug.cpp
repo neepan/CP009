@@ -50,29 +50,30 @@ void neepan()
 
     if (a.find("1") != string::npos)
     {
-        lli c0 = 0, c1 = 0;
-        for (auto x : a)
+        lli f1 = 0, f2 = 0;
+        fr(i, 0, n - 1)
         {
-            if (x == '0')
+            if (i % 2 == 0)
             {
-                c0++;
+                if (a[i] == '1')
+                    f2--;
+                if (b[i] == '0')
+                    f1++;
+            }
+            else
+            {
+                if (a[i] == '1')
+                    f1--;
+                if (b[i] == '0')
+                    f2++;
             }
         }
-        for (auto x : b)
-        {
-            if (x == '0')
-            {
-                c1++;
-            }
-        }
-        if ((c0 ^ c1) & 1)
-        {
-            no;
-        }
-        else
+        if (f1 >= 0 && f2 >= 0)
         {
             yes;
         }
+        else
+            no;
     }
     else
     {
