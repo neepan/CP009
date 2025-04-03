@@ -51,6 +51,7 @@ void neepan()
     vi b(n);
     fr(i, 0, n - 1) cin >> b[i];
 
+    //storing the max lenght xubarray from a and b array
     vi arr(2 * n + 1, 0);
     vi brr(2 * n + 1, 0);
 
