@@ -43,33 +43,22 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    lli n, k;
-    cin >> n >> k;
+    lli n;
+    cin >> n;
 
-    vp health_points(n);
-    fr(i, 0, n - 1) // n
+    string s;
+    cin >> s;
+    vi f(26);
+    lli answer = 0;
+    fr(i, 0, n - 1)
     {
-        lli x;
-        cin >> x;
-        health_points[i] = {x, i + 1};
-    }
-
-    fr(i, 0, n - 1) // n
-    {
-        health_points[i].ff = health_points[i].ff % k;
-        if (health_points[i].ff == 0)
-            health_points[i].ff = k;
-    }
-
-    sort(all(health_points), [&](pair<lli, lli> a, pair<lli, lli> b)
-         {
-        if(a.ff != b.ff){
-            return a.ff>b.ff;
+        if (!f[s[i] - 'a'])
+        {
+            f[s[i] - 'a'] = 1;
+            answer += (n - i);
         }
-        return a.ss<b.ss; });                    // nlogn
-    for (auto it : health_points) // n
-        cout << it.ss << " ";
-    cout << endl;
+    }
+    cout << answer << endl;
 }
 
 int main()
