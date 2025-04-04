@@ -43,23 +43,39 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    lli n;
-    cin >> n;
-    vi arr(n);
-    fr(i,0,n-1)cin>>arr[i];
+    lli n,k,x;
+    cin >> n>>k>>x;
 
-    if(n&1){
-        cout<<4<<endl;
-        cout<<1<<" "<<n-1<<endl;
-        cout<<1<<" "<<n-1<<endl;
-        cout<<n-1<<" "<<n<<endl;
-        cout<<n-1<<" "<<n<<endl;
+    vi arr(n);
+    fr(i, 0, n - 1)
+    {
+        cin >> arr[i];
     }
-    else{
-        cout<<2<<endl;
-        cout<<1<<" "<<n<<endl;
-        cout<<1<<" "<<n<<endl;
+    
+    lli s = accumulate(all(arr),0ll);
+
+
+    if(x>k *s){
+        cout<<0<<endl;
+        return;
     }
+    lli xm = x % s;
+    lli q = x / s;
+    if (xm == 0)
+    {
+        q--;
+        xm = s;
+    }
+    lli ans = n * k - q * n;
+    lli suf = 0;
+    fr1(i, n - 1, 0)
+    {
+        suf += arr[i];
+        if (suf >= xm)
+            break;
+        ans--;
+    }
+    cout << ans << endl;
 }
 
 int main()

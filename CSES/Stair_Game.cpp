@@ -45,20 +45,23 @@ void neepan()
 {
     lli n;
     cin >> n;
-    vi arr(n);
-    fr(i,0,n-1)cin>>arr[i];
-
-    if(n&1){
-        cout<<4<<endl;
-        cout<<1<<" "<<n-1<<endl;
-        cout<<1<<" "<<n-1<<endl;
-        cout<<n-1<<" "<<n<<endl;
-        cout<<n-1<<" "<<n<<endl;
+    lli ans=0;
+    fr(i, 0, n - 1)
+    {
+        lli x;
+        cin >> x;
+        if (i > 0 && (i % 2) == 1)
+        {
+            ans ^= x;
+        }
     }
-    else{
-        cout<<2<<endl;
-        cout<<1<<" "<<n<<endl;
-        cout<<1<<" "<<n<<endl;
+    if (ans)
+    {
+        cout << "first" << endl;
+    }
+    else
+    {
+        cout << "second" << endl;
     }
 }
 
