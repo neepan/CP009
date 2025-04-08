@@ -43,30 +43,29 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    lli n,k;
-    cin >> n>>k;
-    vi a(n);
-    fr(i, 0, n - 1) cin >> a[i];
 
-    vi b(n);
-    fr(i, 0, n - 1) cin >> b[i];
+    lli n;
+    cin >> n;
 
-    lli maxi = -1e9; // to keep track of max exp (B1...Bi)
-    lli res = -1e9;
-    lli ftime_gains = 0; // to keep track of sum(ai), unique first time gains
-    fr (i, 1, n)
+    if (!(n & 1))
     {
-        ftime_gains += a[i - 1];
-
-        // remaining quests
-        lli rem = k - i;
-        if (rem < 0)
-            break;
-        maxi = max(maxi, b[i - 1]);
-        lli exp_gain = ftime_gains + rem * maxi;
-        res = max(res, exp_gain);
+        cout << -1 << endl;
     }
-    cout << res << endl;
+    else
+    {
+        vi a(n);
+        a[0]=n;
+        
+        fr(i, 1, n - 1)
+        {
+            a[i] = i;
+        }
+        for (auto x : a)
+        {
+            cout << x << " ";
+        }  
+        cout<<endl;
+    }
 }
 
 int main()
