@@ -41,39 +41,40 @@ const int MAX_N = 1e6 + 5;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
+bool isPrime(int n)
+{
+    if (n == 2 || n == 3)
+        return true;
+    if (n <= 1 || n % 2 == 0|| n % 3 == 0)
+        return false;
+    for (int i = 5; i * i <= n; i += 6)
+    {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return false;
+    }
+    return true;
+}
+
 void neepan()
 {
-    string s;
-    cin >> s;
+    lli x, k;
+    cin >> x >> k;
 
-    // lli cn = 0;
-    // lli cnt0 = 0;
-    // for (auto c : s)
-    // {
-    //     if (c == '0')
-    //         cnt0++;
-    //     else
-    //         cn = max(cn, cnt0 + 1);
-    // }
-    // cout << sz(s) - cn << endl;
+    if (k > 1 && x > 1)
+    {
+        no;
+        return;
+    }
+    if (k == 1)
+    {
+        cout << (isPrime(x) ? "YES" : "NO") << endl;
+        return;
+    }
 
-    lli n = sz(s);
-    lli ans = n - 1;
-    lli last = n - 1;
-    fr1(i, n - 1, 0)
-    {
-        if (s[i] != '0')
-        {
-            last = i;
-            break;
-        }
-    }
-    fr(i, 0, last - 1)
-    {
-        if (s[i] == '0')
-            ans--;
-    }
-    cout << ans << endl;
+    assert(x == 1);
+    string s = string(k, '1');
+    lli num = stoi(s);
+    cout << (isPrime(num) ? "YES" : "NO") << endl;
 }
 
 int main()

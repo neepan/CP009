@@ -43,37 +43,37 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    string s;
-    cin >> s;
-
-    // lli cn = 0;
-    // lli cnt0 = 0;
-    // for (auto c : s)
-    // {
-    //     if (c == '0')
-    //         cnt0++;
-    //     else
-    //         cn = max(cn, cnt0 + 1);
-    // }
-    // cout << sz(s) - cn << endl;
-
-    lli n = sz(s);
-    lli ans = n - 1;
-    lli last = n - 1;
-    fr1(i, n - 1, 0)
+    lli n;
+    cin >> n;
+    vi a(n), b(n), psum(n);
+    fr(i, 0, n - 1)
     {
-        if (s[i] != '0')
+        cin >> a[i];
+        b[i] = a[i];
+    }
+    sort(all(b));
+    psum[0] = b[0];
+    fr(i, 1, n - 1)
+    {
+        psum[i] = psum[i - 1] + b[i];
+    }
+    mp mpp;
+    mpp[b[n - 1]] = n - 1;
+    fr1(i, n - 2, 0)
+    {
+        if (psum[i] >= b[i + 1])
         {
-            last = i;
-            break;
+            mpp[b[i]] = mpp[b[i + 1]];
+        }
+        else
+        {
+            mpp[b[i]] = i;
         }
     }
-    fr(i, 0, last - 1)
-    {
-        if (s[i] == '0')
-            ans--;
-    }
-    cout << ans << endl;
+
+    for (auto i : a)
+        cout << mpp[i] << " ";
+    cout << endl;
 }
 
 int main()
