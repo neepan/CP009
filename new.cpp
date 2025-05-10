@@ -28,7 +28,7 @@ using ump = unordered_map<lli, lli>;
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
 
-const int inf = 9e17;
+const lli inf = 9e17;
 const int mod = 1e9 + 7;
 const int NUM = 1000030;
 const int N = 10000000;
@@ -53,6 +53,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    _test
+    
     neepan();
 }
