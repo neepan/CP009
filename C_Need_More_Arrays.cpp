@@ -44,46 +44,25 @@ const int MAX_N = 1e6 + 5;
 
 void neepan()
 {
-    lli n, k;
-    cin >> n >> k;
-
-    string s;
-    cin >> s;
-
-    lli c0 = 0, c1 = 1;
-    for (auto x : s)
-    {
-        if (x == '0')
-            c0++;
-    }  
-    c1 = n - c0;
-     lli total_pairs=n/2;
-    lli bad_pairs=total_pairs-k;
-    if(c0< bad_pairs || c1<bad_pairs){
-        no;
-        return;
+    lli n;
+    cin >> n;
+    lli prev=INT_MIN;
+    lli ans=0;
+    fr(i,0,n-1){
+        lli x;cin>>x;
+        if(prev+1<x){
+            ans++;
+            prev=x;
+        }
     }
-    lli rem0g=c0-bad_pairs;
-    lli rem1g=c1-bad_pairs;
-
-    lli possible0g= rem0g/2;
-    lli possible1g= rem1g/2;
-
-    lli totg=possible0g+possible1g;
-
-    if(totg>=k){
-        yes;
-    }
-    else{
-        no;
-    }
+    cout<<ans<<endl;
 }
 
-    int main()
-    {
-        ios::sync_with_stdio(false);
-        cin.tie(nullptr);
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-        _test
-        neepan();
-    }
+    _test
+    neepan();
+}
