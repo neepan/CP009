@@ -45,21 +45,27 @@ const int MAX_N = 1e6 + 5;
 void neepan()
 {
     lli n;
-    cin>>n;
+    cin >> n;
     vi a(n);
-    fr(i,0,n-1)cin>>a[i];
+    fr(i, 0, n - 1) cin >> a[i];
 
-    lli ans=-1;
-    fr(i,2,n-1){
-        if(min(a[i-1],a[i-2])<=a[i] && a[i]<= max(a[i-1],a[i-2]))ans=1;
+    lli ans = 0;
+
+    fr(i, 0, n - 3)
+    {
+        fr(j, i + 1, n - 2)
+        {
+            auto it = lower_bound(a.begin() + j + 1, a.end(), a[i] + a[j]);
+            int end = it - (a.begin() + j + 1);
+            if (end == 0)
+                continue;
+
+            it = upper_bound(a.begin() + j + 1, a.begin() + j + end + 1, a[n - 1] - a[i] - a[j]);
+            ans += (a.begin() + j + end + 1) - it;
+        }
     }
-    fr(i,0,n-3){
-        if(min(a[i+1],a[i+2])<=a[i] && a[i]<=max(a[i+1],a[i+2])) ans=1;
-    }
-    fr(i,1,n-1){
-        if(abs(a[i-1]-a[i])<=1)ans=0;
-    }
-    cout<<ans<<endl;
+
+    cout << ans << endl;
 }
 
 int main()
