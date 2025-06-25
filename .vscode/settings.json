@@ -75,7 +75,9 @@
         "span": "cpp",
         "stacktrace": "cpp",
         "text_encoding": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "flat_map": "cpp",
+        "flat_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
