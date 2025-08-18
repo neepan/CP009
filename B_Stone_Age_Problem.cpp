@@ -42,29 +42,49 @@ const int MAX_N = 1e6 + 5;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
-int gcd_recursive(int a, int b)
-{
-    if (b == 0)
-    {
-        return a;
-    }
-    return gcd_recursive(b, a % b);
-}
-
 void neepan()
 {
-    lli a, b, k;
-    cin >> a >> b >> k;
-    lli g = gcd(a, b);
-    lli dx = a / g, dy = b / g;
-    if (dx <= k && dy <= k)
-    {
-        cout << 1 << endl;
+    lli n, q;
+    cin >> n >> q;
+    vp v(n,{0,0});
+    fr(i, 0, n - 1) {
+        cin>> v[i].ff;
     }
-    else
-    {
-        cout << 2 << endl;
+    pair<lli, lli> globalVal = {0,-1};
+
+    lli sum=0;
+    fr(i,0,n-1){
+        sum+=v[i].ff;
     }
+
+    fr(i,1,q){
+        lli x;
+        cin>>x;
+        if(x==1){
+            lli ind, val;
+            cin >> ind >> val;
+            ind--;
+            if(v[ind].ss > globalVal.ss) {
+                sum+=(val -v[ind].ff);
+            }
+            else{
+                sum+=(val -globalVal.ff);
+            }
+            v[ind].ff = val;
+            v[ind].ss = i;
+        }
+        else{
+            lli val;
+            cin>>val;
+
+            globalVal.ff= val;
+            globalVal.ss = i;
+
+            sum=(lli)(val)*n;
+        }
+        cout<<sum<<endl;
+    }
+
 }
 
 int main()
@@ -72,6 +92,6 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    _test
+    
     neepan();
 }

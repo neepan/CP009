@@ -42,29 +42,28 @@ const int MAX_N = 1e6 + 5;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
-int gcd_recursive(int a, int b)
-{
-    if (b == 0)
-    {
-        return a;
-    }
-    return gcd_recursive(b, a % b);
-}
-
 void neepan()
 {
-    lli a, b, k;
-    cin >> a >> b >> k;
-    lli g = gcd(a, b);
-    lli dx = a / g, dy = b / g;
-    if (dx <= k && dy <= k)
-    {
-        cout << 1 << endl;
+    lli n, k;
+    cin >> n >> k;
+
+    mp s;
+    fr(i,0,n-1){
+        lli x;cin>>x;
+        s[x%k]++;s[k-x%k]++;
     }
-    else
-    {
-        cout << 2 << endl;
+
+    fr(i,0,n-1){
+        lli x;cin>>x;
+        s[x%k]--, s[k-x%k]--;
     }
+    for(auto it: s){
+        if(it.second){
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 int main()

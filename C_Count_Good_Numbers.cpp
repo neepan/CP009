@@ -42,29 +42,48 @@ const int MAX_N = 1e6 + 5;
 // const lli MAX_N = 1000; // Adjust based on constraints
 // vector<vector<lli>> a(MAX_N, vector<lli>(MAX_N));
 
-int gcd_recursive(int a, int b)
-{
-    if (b == 0)
-    {
-        return a;
-    }
-    return gcd_recursive(b, a % b);
-}
-
 void neepan()
 {
-    lli a, b, k;
-    cin >> a >> b >> k;
-    lli g = gcd(a, b);
-    lli dx = a / g, dy = b / g;
-    if (dx <= k && dy <= k)
-    {
-        cout << 1 << endl;
-    }
-    else
-    {
-        cout << 2 << endl;
-    }
+    lli l, r;
+    cin >> l >> r;
+
+    lli ans,c=0,c1;
+
+    ans=r-l+1;
+
+    //2 3 5 7
+    c1=(r/2)-(l-1)/2 + (r/3)-(l-1)/3+ (r/5)-(l-1)/5 +   (r/7)-(l-1)/7;
+
+    //2 3
+    c1=c1-((r/6)-(l-1)/6);
+    // 2 5
+    c1=c1-((r/10)-(l-1)/10);
+    // 2 7
+    c1=c1-((r/14)-(l-1)/14);
+    // 3 5
+    c1=c1-((r/15)-(l-1)/15);
+    //3 7
+    c1=c1-((r/21)-(l-1)/21);
+    //5 7
+    c1=c1-((r/35)-(l-1)/35);
+
+    //2 3 5
+    c1=c1+((r/30)-(l-1)/30);
+    // 2 3 7
+    c1=c1+((r/42)-(l-1)/42);
+    // 2 5 7
+    c1=c1+((r/70)-(l-1)/70);
+    //3 5 7
+    c1=c1+((r/105)-(l-1)/105);
+
+    // 2 3 5 7
+    c1=c1-((r/210)-(l-1)/210);
+
+    ans=ans-c1;
+    cout<<ans<<endl;
+    
+
+
 }
 
 int main()
